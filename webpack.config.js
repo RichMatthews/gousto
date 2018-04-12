@@ -17,7 +17,7 @@ module.exports = {
  module: {
    loaders: [
      {
-       test: /\.js$/,
+       test: /\.(js|jsx)$/,
        exclude: /node_modules/,
        loader: 'babel',
        query: {
@@ -25,9 +25,16 @@ module.exports = {
        }
      },
      {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         loaders: ["style-loader", "css-loader", "sass-loader"]
-      }
+     },
+     {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+    }
    ]
- }
+ },
+ resolve: {
+  extensions: ['', '.js', '.jsx']
+}
 }

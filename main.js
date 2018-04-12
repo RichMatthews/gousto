@@ -1,1 +1,1 @@
-import "./client/redux/store";
+import "./client";
