@@ -1,6 +1,8 @@
 import React from 'react';
 import { Menu } from './index';
 import { shallow } from 'enzyme';
+import Products from '../Products';
+import Categories from '../Categories';
 
 describe('Menu Component', () => {
   let wrapper;
@@ -15,19 +17,17 @@ describe('Menu Component', () => {
     {id: 3, title: 'fanta', description: 'the description', showDescription: false, categories: [{title: 'Drinks'}]},
     {id: 4, title: 'burgers', description: 'the description', showDescription: false, categories: [{title: 'Snacks'}]}
   ];
-  const filterProductsStub = jest.fn();
-  wrapper = shallow(<Menu
-    categories={categoriesStub}
-    products={productsStub}
-    filterProducts={filterProductsStub}
-    />);
+  wrapper = shallow(<Menu />);
     wrapper.setState({products: productsStub})
     wrapper.setState({categories: categoriesStub})
   it('should render a menu container component', () => {
     expect(wrapper.find('.menuContainer').length).toEqual(1);
   });
-  it('should render a an available categories component', () => {
-    expect(wrapper.find('.availableCategories').length).toEqual(1);
+  it('should render the Product component', () => {
+    expect(wrapper.find(Products).length).toEqual(1);
+  });
+  it('should render the Categories component', () => {
+    expect(wrapper.find(Categories).length).toEqual(1);
   });
   it('should have an initial state of empty string', () => {
     expect(wrapper.state('chosenCategory')).toEqual('');

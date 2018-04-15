@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import Products from '../Products';
+import Categories from '../Categories';
 import './index.scss';
 
 export class Menu extends React.Component {
@@ -85,32 +87,27 @@ export class Menu extends React.Component {
   render(){
     return(
       <div className="menuContainer">
-        <div className="availableCategories">
-          {this.showAvailableCategories().map(category => (
-            <div className={`${this.activeCategory(category)} availableCategory`} onClick={() => this.updateSelectedCategory(category)}>
-              {category.title}
-            </div>
-          ))}
-        </div>
+        <Products
+          showAvailableCategories={this.showAvailableCategories}
+          activeCategory={this.activeCategory}
+          updateSelectedCategory={this.updateSelectedCategory}
+        />
       <input
         onChange={this.search}
       />
-      {
-        (this.filterProducts()).filter(product => product.title.toLowerCase().includes(this.state.searchTerm)).map((product) => (
-          <div onClick={() => this.toggleDescription(product)}>
-            <div className={this.showProductDescription(product) ? 'viewedProduct' : ''}>{product.title}</div>
-            <div>{this.showProductDescription(product)}</div>
-          </div>
-        ))
-      }
+      <Categories
+        filterProducts={this.filterProducts}
+        toggleDescription={this.toggleDescription}
+        showProductDescription={this.showProductDescription}
+        searchTerm={this.state.searchTerm}
+      />
       </div>
     )
   }
-
 }
 
 const mapStateToProps = state => ({
-  myState: state.myState
+
 });
 
 const mapDispatchToProps = dispatch => ({
