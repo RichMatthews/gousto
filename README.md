@@ -1,4 +1,4 @@
-#Gousto test
+# Gousto test
 
 ## How to use solution
 `npm i`
