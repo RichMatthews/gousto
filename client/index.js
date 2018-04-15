@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Example from './components/Example';
+import Menu from './components/Menu';
 
 class Component extends React.Component{
   render(){
     return (
-      <Example />
+      <Menu />
       )
   };
 };

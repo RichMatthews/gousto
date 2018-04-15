@@ -1,0 +1,23 @@
+.availableCategories{
+  display: flex;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.availableCategory{
+  margin-right: 55px;
+}
+
+.viewedProduct{
+  font-weight: bold;
+}
+
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.productDescription{
+  margin-bottom: 10px;
+}
