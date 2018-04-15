@@ -28,7 +28,8 @@ export class Menu extends React.Component {
   }
 
   updateSelectedCategory = (category) => {
-    this.setState({chosenCategory: category});
+    const title = category.title;
+    this.setState({chosenCategory: title});
     this.activateCategory(category)
   }
 
@@ -36,7 +37,7 @@ export class Menu extends React.Component {
     this.setState({searchTerm: e.target.value})
   }
 
-  filterCategories = () => {
+  filterProducts = () => {
     return this.state.products.filter((product => (
       product.categories.some((cat) => (
          cat.title == this.state.chosenCategory
@@ -71,9 +72,9 @@ export class Menu extends React.Component {
 
   activateCategory = (category) => {
     let categories = [...this.state.categories];
-    let findCategory = this.state.categories.find(cat => cat.title == category)
+    let findCategory = this.state.categories.find(cat => cat.title == category.title)
     findCategory.active = true;
-    let unfilteredCategories = this.state.categories.filter(cat => cat.title != category)
+    let unfilteredCategories = this.state.categories.filter(cat => cat.title != category.title)
     unfilteredCategories.map((unfilteredCategory) => {
       unfilteredCategory.active = false
       this.setState({unfilteredCategory})
@@ -86,7 +87,7 @@ export class Menu extends React.Component {
       <div className="menuContainer">
         <div className="availableCategories">
           {this.showAvailableCategories().map(category => (
-            <div className={`${this.activeCategory(category)} availableCategory`} onClick={() => this.updateSelectedCategory(category.title)}>
+            <div className={`${this.activeCategory(category)} availableCategory`} onClick={() => this.updateSelectedCategory(category)}>
               {category.title}
             </div>
           ))}
@@ -95,7 +96,7 @@ export class Menu extends React.Component {
         onChange={this.search}
       />
       {
-        (this.filterCategories()).filter(product => product.title.toLowerCase().includes(this.state.searchTerm)).map((product) => (
+        (this.filterProducts()).filter(product => product.title.toLowerCase().includes(this.state.searchTerm)).map((product) => (
           <div onClick={() => this.toggleDescription(product)}>
             <div className={this.showProductDescription(product) ? 'viewedProduct' : ''}>{product.title}</div>
             <div>{this.showProductDescription(product)}</div>
