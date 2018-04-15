@@ -10,10 +10,10 @@ describe('Menu Component', () => {
     {id: 3, title: 'Snacks', active: false}
   ];
   let productsStub = [
-    {id: 1, title: 'wine01', showDescription: false, categories: [{title: 'wine'}]},
-    {id: 2, title: 'coke', showDescription: false, categories: [{title: 'Drinks'}]},
-    {id: 3, title: 'fanta', showDescription: false, categories: [{title: 'Drinks'}]},
-    {id: 4, title: 'burgers', showDescription: false, categories: [{title: 'Snacks'}]}
+    {id: 1, title: 'wine01', description: 'the description', showDescription: false, categories: [{title: 'wine'}]},
+    {id: 2, title: 'coke', description: 'the description', showDescription: false, categories: [{title: 'Drinks'}]},
+    {id: 3, title: 'fanta', description: 'the description', showDescription: false, categories: [{title: 'Drinks'}]},
+    {id: 4, title: 'burgers', description: 'the description', showDescription: false, categories: [{title: 'Snacks'}]}
   ];
   const filterProductsStub = jest.fn();
   wrapper = shallow(<Menu
@@ -70,6 +70,12 @@ describe('Menu Component', () => {
     testProduct.active = true
     wrapper.instance().toggleDescription(testProduct);
     expect(testProduct.showDescription).toEqual(false)
+  });
+  it('should add `viewedProduct` className when product is viewed', () => {
+    const testProduct = productsStub[0];
+    testProduct.active = true
+    wrapper.instance().toggleDescription(testProduct);
+    expect(wrapper.instance().showProductDescription(testProduct)).toEqual('the description')
   });
   it('should filter the available categories', () => {
     wrapper.instance().showAvailableCategories();
