@@ -21,7 +21,6 @@ I didn't use redux (even though I considered it). The reason there is some redux
 The reason I didn't use redux was because I didn't think there was any complicated state management and therefore wasn't necessary.
 In my opinion redux is great at what it does but it has a time and a place and using it outside those boundaries can add to complexity, sometimes React state is fine :).
 
-However, if this app was to get any bigger I would start using Redux as I believe it is better to implement it before you get too far down the line and then you either need to build again from the beginning or spend hours trying to integrate it.
 I created 2 other components called Products and Categories. I kept these as presentational, stateless components as I believed it was best for these components just to take data given to them and render it. It worked well.
 
 # Testing
