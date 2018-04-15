@@ -1,6 +1,6 @@
-## Gousto test
+#Gousto test
 
-# How to use solution
+## How to use solution
 `npm i`
 
 `npm run start`
@@ -8,7 +8,7 @@
 new window:
 `npm run watch`
 
-# Explaining solution
+## Explaining solution
 
 I focussed heavily on the JavaScript functionality side of things rather than CSS. I made sure it's set out as per the designs
 as this is how I would code something normally into production. If I had an issue or concern with a design I would collaborate
@@ -23,7 +23,7 @@ In my opinion redux is great at what it does but it has a time and a place and u
 
 I created 2 other components called Products and Categories. I kept these as presentational, stateless components as I believed it was best for these components just to take data given to them and render it. It worked well.
 
-# Testing
+## Testing
 `npm run test`
 
 I have written unit tests for the Menu component. Some of the tests probably should belong in the other components but I ran out of time when refactoring.
